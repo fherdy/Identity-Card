@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact Me</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="static/favicon.ico?v=2"/>
+    <link rel="stylesheet" href="static/css/contact.css" />
+
+</head>
+<body>
+<!--    <a class="contact-me-header" href="{{url_for('home')}}">Card</a>-->
+
+<div id="wrapper">
+    <section id="main">
+        {%if page_title == 'Contact Me' %}
+        <h3>{{page_title}}</h3>
+        {%else%}
+        <h3 style="color:green;">{{page_title}}</h3>
+        {%endif%}
+
+        <form action={{url_for('contactme')}} method="POST">
+        <label>Full Name
+        <input type="text" id="full-name" name="full-Name" required>
+            </label>
+
+        <label>Email
+        <input type="email" name="email" id="email" required>
+            </label>
+
+        <label>Message
+        <textarea name="message" placeholder="Enter message here..." required></textarea>
+            </label>
+
+        <div class="buttons">
+<!--            <button id="cancel" onclick="route_home()">CANCEL</button>-->
+            <button type="submit" id="send">SUBMIT</button>
+        </div>
+    </form>
+    <ul class="icons">
+        <li><a href="{{ url_for('home') }}" class="fa-times-circle">Email</a></li>
+    </ul>
+    </section>
+
+
+    <footer id="footer">
+        <ul class="copyright">
+            <li>&copy; {{current_year}} Ferdinand Tettey</li>
+        </ul>
+    </footer>
+
+</div>
+    <!--[if lte IE 8]><script src="static/js/respond.min.js"></script><![endif]-->
+    <script>
+		if ('addEventListener' in window) {
+			window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+			document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+			}
+	</script>
+    <script>
+        function route_home(){
+        window.location = "/"}
+    </script>
+
+
+</body>
+</html>
