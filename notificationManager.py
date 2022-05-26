@@ -2,8 +2,9 @@ import os
 import smtplib
 
 
-SENDER_EMAIL = "ferdie.tettey@yahoo.com"
-PASSWORD = "fhecbuvngrutwtlz"
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
+PASSWORD = os.environ.get('PASSWORD')
+
 
 class NotificationManager:
     #This class is responsible for sending notifications with the deal flight details.
@@ -21,7 +22,7 @@ class NotificationManager:
 
             try:
                 connection.sendmail(from_addr=SENDER_EMAIL,
-                                to_addrs="ferdinandowusu13@gmail.com",
+                                to_addrs=os.environ.get('REC_EMAIL'),
                                 msg=f"Subject:You just got contacted by {self.name}! \n\nName: {self.name} \nEmail: {self.emal}\nMessage: {self.message}")
                 print("Successfully Sent!")
             except (smtplib.SMTPResponseException, smtplib.SMTPRecipientsRefused, smtplib.SMTPAuthenticationError):
