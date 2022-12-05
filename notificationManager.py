@@ -23,9 +23,9 @@ class NotificationManager:
             try:
                 connection.sendmail(from_addr=SENDER_EMAIL,
                                 to_addrs=os.environ.get('REC_EMAIL'),
-                                msg="test")
+                                msg="Subject:You just got contacted by "+self.name+" \n\nName: "+self.name+" \nEmail: "+self.emal+"\nMessage: "+self.message)
                 print("Successfully Sent!")
             except (smtplib.SMTPResponseException, smtplib.SMTPRecipientsRefused, smtplib.SMTPAuthenticationError):
-                print(f"{self.receipient_email} is an invalid email")
+                print(self.receipient_email+" is an invalid email")
 
 
